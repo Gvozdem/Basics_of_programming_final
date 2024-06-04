@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Наша форма</title>
+	<link rel="icon" type="image/x-icon"
+		  href="{{ url_for('static', filename='img/favicon.png') }}">
+</head>
+<body>
+
+<h1>Добавление сообщения</h1>
+<form action="/new-message" method="post" enctype="multipart/form-data">
+	{{ f.message_title.label }} {{ f.message_title() }}
+	{% for error in f.message_title.errors %}
+	<p style="font-family: monospace; color: red; margin: 4px;">{{ error }}</p>
+	{% endfor %}
+	<br>
+
+	{{ f.message_content.label }} <br>
+	{{ f.message_content() }}
+	{% for error in f.message_content.errors %}
+	<p style="font-family: monospace; color: red; margin: 4px;">{{ error }}</p>
+	{% endfor %}
+
+	<br>
+
+	{{ f.message_recipient.label }} {{ f.message_recipient() }}
+	{% for error in f.message_recipient.errors %}
+	<p style="font-family: monospace; color: red; margin: 4px;">{{ error }}</p>
+	{% endfor %}
+
+	<br>
+
+	{{ f.creation_date.label }} {{f.creation_date() }}
+	{% for error in f.creation_date.errors %}
+	<p style="font-family: monospace; color: red; margin: 4px;">{{ error }}</p>
+	{% endfor %}
+
+	<br>
+
+	<input type="submit" value="Отправить"> <input type="reset" value="Очистить форму">
+</form>
+
+</body>
+</html>

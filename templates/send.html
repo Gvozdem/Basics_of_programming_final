@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon"
+		  href="{{ url_for('static', filename='img/favicon.png') }}">
+	<title>Все входящие сообщения</title>
+</head>
+<body>
+{% for message in messages %}
+	<div>
+		<h3>{{message.title}}</h3>
+		<p>{{message.content}}</p>
+		<p>
+			<b>Автор:</b> {{message.author.first_name + ' ' + message.author.last_name}}
+			<br><i>Создано:</i> {{message.created_on}}
+		</p>
+	</div>
+{% endfor %}
+</body>
+</html>
